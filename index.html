@@ -60,10 +60,9 @@
             color: #007bff;
         }
 
-        /* Hero section */
+        /* Hero section - revert desktop styles but keep mobile improvements */
         .hero {
-            min-height: 100vh;
-            padding-top: 80px;
+            height: 100vh;  /* Revert to fixed height for desktop */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -196,16 +195,24 @@
 
             .hero {
                 padding-top: 100px;
+                min-height: 100vh;
             }
 
             .profile-section {
+                flex-direction: column;
+                text-align: center;
                 margin: 0;
                 padding: 1rem;
+                gap: 2rem;
             }
 
             .profile-image {
                 width: 200px;
                 height: 200px;
+            }
+
+            .profile-content {
+                text-align: center;
             }
 
             .profile-content h1 {
@@ -215,6 +222,7 @@
             .action-buttons {
                 flex-direction: row;
                 padding: 0 1rem;
+                gap: 1rem;
             }
             
             .cta-button {
@@ -227,6 +235,7 @@
             .achievements {
                 margin: 2rem -1rem 0;
                 padding: 2rem 1rem;
+                border-radius: 0;
             }
 
             .achievement-item {
@@ -290,39 +299,16 @@
             margin-top: 1rem;
         }
 
-        .achievements {
-            margin: 4rem -2rem 0;
-            border-radius: 0;
-            padding: 3rem 1rem;
-        }
-
-        .achievement-item {
+        /* Profile section - revert desktop styles */
+        .profile-section {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            padding: 1rem;
-            background: white;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
-        }
-
-        .achievement-item:hover {
-            transform: translateX(10px);
-        }
-
-        .achievement-icon {
-            font-size: 2rem;
-            color: #007bff;
-        }
-
-        /* Additional Styles */
-        .profile-section {
-            gap: 2rem;
-            padding: 1rem;
-            margin: 1rem;
-            width: 100%;
-            max-width: 1200px;
+            gap: 4rem;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
         }
 
         .profile-image {
@@ -421,22 +407,29 @@
             }
         }
 
-        /* Add these new styles for the buttons */
+        /* Action buttons - revert desktop styles */
         .action-buttons {
-            margin: 2rem auto;
+            margin-top: 2rem;
             display: flex;
-            gap: 1rem;
+            gap: 2rem;
             justify-content: center;
-            width: 100%;
-            max-width: 1000px;
-            padding: 0 1rem;
         }
 
         .cta-button {
-            width: 40%;
-            max-width: 250px;
-            font-size: 1rem;
-            padding: 0.8rem 1.5rem;
+            font-size: 1.2rem;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            min-width: 200px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
         .download-btn {
@@ -483,7 +476,50 @@
             cursor: not-allowed;
         }
 
-        /* Add styles for very small screens */
+        /* Achievements section styles */
+        .achievements {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 3rem;
+            margin-top: 4rem;
+        }
+
+        .achievement-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .achievement-item:hover {
+            transform: translateX(10px);
+        }
+
+        .achievement-icon {
+            font-size: 2.5rem;
+            color: #007bff;
+        }
+
+        /* Only for mobile */
+        @media (max-width: 768px) {
+            .achievements {
+                margin: 2rem -1rem 0;
+                padding: 2rem 1rem;
+                border-radius: 0;
+            }
+
+            .achievement-item {
+                margin-bottom: 1rem;
+                padding: 1rem;
+            }
+        }
+
+        /* Mobile-specific styles */
         @media (max-width: 480px) {
             .profile-content h1 {
                 font-size: 2rem;
